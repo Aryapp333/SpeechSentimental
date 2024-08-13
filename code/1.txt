@@ -1,0 +1,13 @@
+def login():
+    #creating label
+    uname = Label(top, text = "Username",font=large_font).place(x = 30,y = 50)
+    e1 = Entry(top,width = 20,textvariable=u_name,font=large_font).place(x = 140, y = 50)
+
+    #creating label
+    password = Label(top, text = "Password",font=large_font).place(x = 30, y = 90)
+    e2 = Entry(top, width = 20,textvariable=u_pass,font=large_font,show="*").place(x = 140, y = 90)
+    sbmitbtn = Button(top, text="Cancel", activebackground="pink", font=large_font, activeforeground="blue", command=top.destroy).place(x=300, y=130)
+
+    sbmitbtn = Button(top, text = "Submit",activebackground = "pink",font=large_font, activeforeground = "blue",command=checkuser).place(x = 200, y = 130)
+
+    top.mainloop()

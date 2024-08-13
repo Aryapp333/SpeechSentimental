@@ -1,0 +1,39 @@
+def checkuser():
+    get_name = u_name.get().strip()
+    get_pass = u_pass.get().strip()
+    print("Name:", get_name, ",", "Password:", get_pass)
+
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="root",
+        database="speech"
+    )
+    if get_name=="" and get_pass=="":
+        messagebox.showinfo("Entry","username and pass missing")
+    elif get_name=="":
+        messagebox.showinfo("Entry","username is blank")
+    elif get_pass=="":
+        messagebox.showinfo("Entry","password is blank")
+    else:
+        mycursor = mydb.cursor()
+        sql = "SELECT * FROM login WHERE userid = %s and password=%s"
+        adr = (get_name,get_pass)
+
+        mycursor.execute(sql, adr)
+
+        print("I am here...")
+        myresult = mycursor.fetchall()
+        print("Count:",mycursor.rowcount)
+        if mycursor.rowcount:
+            top.withdraw()
+            cp=Toplevel()
+            print("I am here...")
+            #w=AdminHome(cp)
+            #adminhome()
+        else:
+            messagebox.showinfo("Entry","no such user")
+        print("done....")
+
+        #-----validation here
+        #adminhome()
